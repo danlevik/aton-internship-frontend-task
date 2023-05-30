@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { Auth } from "./pages/Auth/index";
 import { MainPage } from "./pages/MainPage";
 import ProtectedRoute from "./util/ProtectedRoute";
+import { UserObjects } from "./pages/UserObjects";
 
 function App() {
   return (
@@ -20,14 +21,14 @@ function App() {
           }
         ></Route>
 
-        {/* <Route
+        <Route
           path="/objects"
           element={
             <ProtectedRoute>
               <UserObjects />
             </ProtectedRoute>
           }
-        ></Route> */}
+        ></Route>
       </Routes>
     </div>
   );
