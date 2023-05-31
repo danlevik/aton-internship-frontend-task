@@ -1,9 +1,7 @@
 import styles from "./DataTable.module.css";
 
+// Компонент таблицы с данныхми
 export const DataTable = ({ data }) => {
-  // data.map((obj, index) => console.log(obj));
-  // console.log(data);
-
   return (
     <div className={styles.tableFixHead}>
       <table>

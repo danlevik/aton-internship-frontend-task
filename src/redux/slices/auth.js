@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../axios";
 
+// Обработка авторизации и регистрации
 export const fetchAuth = createAsyncThunk("auth/fetchAuth", async (params) => {
   const { data } = await axios.post("/login", params);
   return data;
@@ -27,6 +28,7 @@ const authSlice = createSlice({
       state.data = null;
     },
   },
+  // Передача данных клиенту в зависимости от статуса запросов
   extraReducers: {
     [fetchAuth.pending]: (state) => {
       state.status = "loading";

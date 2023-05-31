@@ -3,6 +3,7 @@ import { Route, useNavigate } from "react-router-dom";
 import { selectIsAuth } from "../redux/slices/auth";
 import { useSelector } from "react-redux";
 
+// Защищенный маршрут для блокирования страниц без авторизации
 const ProtectedRoute = (props) => {
   const isAuth = useSelector(selectIsAuth);
   const navigate = useNavigate();

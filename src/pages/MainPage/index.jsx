@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// Компонент главной страницы
 export const MainPage = () => {
   const dispatch = useDispatch();
   const { colors } = useSelector((state) => state.colors);
@@ -13,6 +14,7 @@ export const MainPage = () => {
 
   const isColorsLoading = colors.status === "loading";
 
+  // Объект-плейсхолдер для таблицы на время загрузки
   const loadingObject = [
     {
       name: "loading",
@@ -34,9 +36,11 @@ export const MainPage = () => {
     },
   ];
 
+  // первичный запрос данных
   useEffect(() => {
     dispatch(fetchColors(page));
   }, []);
+  // обновление данных при изменении страницы
   useEffect(() => {
     const startRequestTime = new Date();
     dispatch(fetchColors(page));

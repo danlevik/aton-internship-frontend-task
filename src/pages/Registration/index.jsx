@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRegister, selectIsAuth } from "../../redux/slices/auth";
-import { Form, useNavigate } from "react-router-dom";
+import { Form, Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const Registration = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export const Registration = () => {
       console.log(data);
 
       if (!data.payload) {
-        alert("Не удалось зарегистрироваться");
+        toast("Не удалось зарегистрироваться");
       }
       if ("token" in data.payload) {
         window.localStorage.setItem("token", data.payload.token);
@@ -32,7 +33,7 @@ export const Registration = () => {
       navigate("/");
     } catch (error) {
       console.warn(error);
-      alert("Не удалось зарегистрироваться");
+      toast("Не удалось зарегистрироваться");
     }
   };
 
@@ -42,6 +43,7 @@ export const Registration = () => {
   return (
     <div>
       <h3>Регистрация аккаунта</h3>
+      <p>(Работает только для существующих пользователей в reqres.in)</p>
       <form onSubmit={onSubmit}>
         <label htmlFor="email">Почта</label>
         <input
@@ -59,6 +61,7 @@ export const Registration = () => {
         ></input>
         <button type="submit">Зарегистрироваться</button>
       </form>
+      <Link to="/login">Авторизоваться</Link>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { Header } from "../Header";
 
+// Компонент модального окна для создания и редактирования объектов
 export const Modal = ({
   addObject,
   editObject,
@@ -22,6 +23,8 @@ export const Modal = ({
       color,
       pantone,
     };
+    // если установлен объект для редактирования,
+    // производится его изменение
     if (editingObject) {
       newObject.id = editingObject.id;
       editObject(newObject);

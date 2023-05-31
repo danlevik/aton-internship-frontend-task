@@ -1,9 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../axios";
 
+// Получить данные с сервера
 export const fetchColors = createAsyncThunk(
   "colors/fetchColors",
   async (page = 1) => {
+    // Получаем по 4 строки на страницу, чтобы корректно отобразить функционал
+    // смены страниц
     const { data } = await axios.get(`/colors?per_page=4&page=${page}`);
     return data;
   }
@@ -21,7 +24,7 @@ const colorsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    // получение данных о цветах
+    // Состояние списка цветов в зависимости от статуса запроса
     [fetchColors.pending]: (state) => {
       state.colors.items = [];
       state.colors.status = "loading";

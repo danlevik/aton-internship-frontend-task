@@ -26,6 +26,7 @@ export const UserObjects = () => {
     setIsModalOpened(false);
   };
 
+  // При добавлении вставляем новый объект в конец списка
   const addObject = (newObject) => {
     const newArray = objects;
     newArray.push(newObject);
@@ -33,17 +34,20 @@ export const UserObjects = () => {
     toast(`Данные сохранены. ID: ${newObject.id}`);
   };
 
+  // При удалении из списка отфильтровывается удаленный объект
   const deleteObject = (deletedObjectId) => {
     const newArray = objects.filter((obj) => obj.id != deletedObjectId);
     setObjects(newArray);
     toast(`Данные удалены`);
   };
 
+  // При редактировании изменяем объект с подходящим id
   const editObject = (editedObject) => {
     const newArray = objects.map((obj) =>
       obj.id === editedObject.id ? editedObject : obj
     );
     setObjects(newArray);
+    // Больше мы ничего не редактируем, обновляем состояние
     setEditingObject(null);
     toast(`Данные обновлены`);
   };

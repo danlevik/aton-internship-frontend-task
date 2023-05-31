@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAuth, selectIsAuth } from "../../redux/slices/auth";
-import { Form, useNavigate } from "react-router-dom";
+import { Form, Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 export const Auth = () => {
   const navigate = useNavigate();
   const isAuth = useSelector(selectIsAuth);
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -18,21 +18,21 @@ export const Auth = () => {
         email,
         password,
       };
-      console.log(fields);
 
+      // авторизация
       const data = await dispatch(fetchAuth(fields));
-      console.log(data);
 
       if (!data.payload) {
-        alert("Не удалось авторизоваться");
+        toast("Не удалось авторизоваться");
       }
       if ("token" in data.payload) {
         window.localStorage.setItem("token", data.payload.token);
       }
+      // Успешная авторизация перенаправляет пользователя на главную страницу
       navigate("/");
     } catch (error) {
       console.warn(error);
-      alert("Не удалось авторизоваться");
+      toast("Не удалось авторизоваться");
     }
   };
 
@@ -59,6 +59,8 @@ export const Auth = () => {
         ></input>
         <button type="submit">Войти</button>
       </form>
+      <Link to="/signup">Зарегистрироваться</Link>
+      <ToastContainer />
     </div>
   );
 };

@@ -1,8 +1,11 @@
+// Компонент объекта, создаваемого пользователем локально
 export const UserObject = ({ data, deleteObject, onOpenModal, editObject }) => {
   const onDelete = () => {
     deleteObject(data.id);
   };
 
+  // Редактирование вызывает внешнюю функцию и передает себя
+  // и открывает модальное окно
   const onEdit = () => {
     editObject(data);
     onOpenModal(true);
