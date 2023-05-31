@@ -2,6 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 import { Modal } from "../../components/Modal";
 import { UserObject } from "../../components/UserObject";
 import { v4 as uuid } from "uuid";
+import { Header } from "../../components/Header";
+import { ToastContainer, toast } from "react-toastify";
 
 export const UserObjects = () => {
   const [objects, setObjects] = useState([
@@ -28,11 +30,13 @@ export const UserObjects = () => {
     const newArray = objects;
     newArray.push(newObject);
     setObjects(newArray);
+    toast(`Данные сохранены. ID: ${newObject.id}`);
   };
 
   const deleteObject = (deletedObjectId) => {
     const newArray = objects.filter((obj) => obj.id != deletedObjectId);
     setObjects(newArray);
+    toast(`Данные удалены`);
   };
 
   const editObject = (editedObject) => {
@@ -41,10 +45,12 @@ export const UserObjects = () => {
     );
     setObjects(newArray);
     setEditingObject(null);
+    toast(`Данные обновлены`);
   };
 
   return (
     <div>
+      <Header></Header>
       {objects.map((obj, index) => (
         <UserObject
           deleteObject={deleteObject}
@@ -63,6 +69,7 @@ export const UserObjects = () => {
           editingObject={editingObject}
         ></Modal>
       ) : null}
+      <ToastContainer />
     </div>
   );
 };

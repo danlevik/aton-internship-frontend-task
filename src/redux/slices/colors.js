@@ -4,8 +4,6 @@ import axios from "../../axios";
 export const fetchColors = createAsyncThunk(
   "colors/fetchColors",
   async (page = 1) => {
-    // console.log("params: " + params);
-
     const { data } = await axios.get(`/colors?per_page=4&page=${page}`);
     return data;
   }

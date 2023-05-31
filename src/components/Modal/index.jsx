@@ -33,7 +33,6 @@ export const Modal = ({
 
   return (
     <div>
-      <Header></Header>
       <form onSubmit={onSubmit}>
         <label htmlFor="naming">Название</label>
         <input

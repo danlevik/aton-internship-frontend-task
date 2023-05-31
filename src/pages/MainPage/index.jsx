@@ -3,6 +3,8 @@ import { DataTable } from "../../components/DataTable";
 import { Header } from "../../components/Header";
 import { fetchColors } from "../../redux/slices/colors";
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const MainPage = () => {
   const dispatch = useDispatch();
@@ -36,10 +38,11 @@ export const MainPage = () => {
     dispatch(fetchColors(page));
   }, []);
   useEffect(() => {
+    const startRequestTime = new Date();
     dispatch(fetchColors(page));
+    const responseTime = new Date() - startRequestTime;
+    toast(`Данные получены за ${responseTime}мс`);
   }, [page]);
-
-  const onChangePage = (isNextPage) => {};
 
   return (
     <div>
@@ -67,6 +70,7 @@ export const MainPage = () => {
           ) : null}
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 };
