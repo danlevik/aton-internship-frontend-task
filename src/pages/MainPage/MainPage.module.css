@@ -1,0 +1,36 @@
+.page_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.pages {
+  display: inline-block;
+  padding: 0 40px;
+  font-size: 22px;
+}
+
+.buttons_container {
+  align-self: center;
+  margin-top: 20px;
+}
+
+.page_button {
+  align-self: center;
+  width: 250px;
+  height: 40px;
+  margin-right: 10px;
+  margin-top: 10px;
+  background-color: #000;
+  border: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 20px;
+
+  transition: all 0.1s;
+  cursor: pointer;
+  align-self: center;
+}
+
+.page_button:hover {
+  background-color: #555;
+}

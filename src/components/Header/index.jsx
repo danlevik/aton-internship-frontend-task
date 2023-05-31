@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectIsAuth } from "../../redux/slices/auth";
 import { Link, useNavigate } from "react-router-dom";
+import styles from "./Header.module.css";
 
 // Хэдер сайта
 export const Header = () => {
@@ -19,10 +20,16 @@ export const Header = () => {
   };
 
   return (
-    <div>
-      <Link to="/">Главная</Link>
-      <Link to="/objects">Объекты пользователя</Link>
-      <button onClick={onClickLogout}>Выйти</button>
-    </div>
+    <header className={styles.header_container}>
+      <Link className={styles.header_link} to="/">
+        Главная
+      </Link>
+      <Link className={styles.header_link} to="/objects">
+        Объекты пользователя
+      </Link>
+      <button className={styles.logout_button} onClick={onClickLogout}>
+        Выйти
+      </button>
+    </header>
   );
 };

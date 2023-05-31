@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchRegister, selectIsAuth } from "../../redux/slices/auth";
 import { Form, Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import styles from "./Registration.module.css";
 
 export const Registration = () => {
   const navigate = useNavigate();
@@ -41,27 +42,38 @@ export const Registration = () => {
   }
 
   return (
-    <div>
-      <h3>Регистрация аккаунта</h3>
-      <p>(Работает только для существующих пользователей в reqres.in)</p>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="email">Почта</label>
+    <div className={styles.form_container}>
+      <h3 className={styles.form_header}>Регистрация аккаунта</h3>
+      <form className={styles.form} onSubmit={onSubmit}>
+        <label className={styles.form_label} htmlFor="email">
+          Почта
+        </label>
         <input
+          className={styles.form_input}
           onChange={(e) => setEmail(e.target.value)}
           id="email"
           value={email}
           placeholder="Ваша почта..."
         ></input>
-        <label htmlFor="password">Пароль</label>
+        <label className={styles.form_label} htmlFor="password">
+          Пароль
+        </label>
         <input
+          className={styles.form_input}
           onChange={(e) => setPassword(e.target.value)}
           id="password"
           value={password}
           placeholder="Ваш пароль..."
         ></input>
-        <button type="submit">Зарегистрироваться</button>
+        <button className={styles.form_button} type="submit">
+          Зарегистрироваться
+        </button>
       </form>
       <Link to="/login">Авторизоваться</Link>
+      <p className={styles.form_label}>
+        (Работает только для существующих пользователей в reqres.in)
+      </p>
+      <p className={styles.form_label}>((Например: eve.holt@reqres.in))</p>
     </div>
   );
 };

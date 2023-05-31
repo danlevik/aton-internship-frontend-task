@@ -1,0 +1,47 @@
+.object_container {
+  width: 80%;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.object_param {
+  font-size: 22px;
+}
+
+.object_button {
+  width: 160px;
+  height: 40px;
+  margin-right: 10px;
+  background-color: #000;
+  border: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 20px;
+
+  transition: all 0.1s;
+  cursor: pointer;
+  align-self: center;
+}
+
+.object_button:hover {
+  background-color: #555;
+}
+
+.object_button_red {
+  width: 100px;
+  height: 40px;
+  margin-right: 10px;
+  background-color: #8f1616;
+  border: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 20px;
+
+  transition: all 0.1s;
+  cursor: pointer;
+  align-self: center;
+}
+
+.object_button_red:hover {
+  background-color: #dd1616;
+}

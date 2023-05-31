@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAuth, selectIsAuth } from "../../redux/slices/auth";
 import { Form, Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import styles from "./Auth.module.css";
 
 export const Auth = () => {
   const navigate = useNavigate();
@@ -40,24 +41,32 @@ export const Auth = () => {
   }
 
   return (
-    <div>
-      <h3>Вход в аккаунт</h3>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="email">Почта</label>
+    <div className={styles.form_container}>
+      <h3 className={styles.form_header}>Вход в аккаунт</h3>
+      <form className={styles.form} onSubmit={onSubmit}>
+        <label className={styles.form_label} htmlFor="email">
+          Почта
+        </label>
         <input
+          className={styles.form_input}
           onChange={(e) => setEmail(e.target.value)}
           id="email"
           value={email}
           placeholder="Ваша почта..."
         ></input>
-        <label htmlFor="password">Пароль</label>
+        <label className={styles.form_label} htmlFor="password">
+          Пароль
+        </label>
         <input
+          className={styles.form_input}
           onChange={(e) => setPassword(e.target.value)}
           id="password"
           value={password}
           placeholder="Ваш пароль..."
         ></input>
-        <button type="submit">Войти</button>
+        <button className={styles.form_button} type="submit">
+          Войти
+        </button>
       </form>
       <Link to="/signup">Зарегистрироваться</Link>
       <ToastContainer />

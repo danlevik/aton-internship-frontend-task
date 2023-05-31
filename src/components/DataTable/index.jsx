@@ -3,7 +3,7 @@ import styles from "./DataTable.module.css";
 // Компонент таблицы с данныхми
 export const DataTable = ({ data }) => {
   return (
-    <div className={styles.tableFixHead}>
+    <div className={styles.table_container}>
       <table>
         <thead>
           <tr>

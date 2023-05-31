@@ -4,6 +4,7 @@ import { UserObject } from "../../components/UserObject";
 import { v4 as uuid } from "uuid";
 import { Header } from "../../components/Header";
 import { ToastContainer, toast } from "react-toastify";
+import styles from "./UserObjects.module.css";
 
 export const UserObjects = () => {
   const [objects, setObjects] = useState([
@@ -55,25 +56,33 @@ export const UserObjects = () => {
   return (
     <div>
       <Header></Header>
-      {objects.map((obj, index) => (
-        <UserObject
-          deleteObject={deleteObject}
-          onOpenModal={onOpenModal}
-          editObject={setEditingObject}
-          key={index}
-          data={obj}
-        ></UserObject>
-      ))}
-      <button onClick={onOpenModal}>Создать объект</button>
-      {isModalOpened ? (
-        <Modal
-          onCloseModal={onCloseModal}
-          addObject={addObject}
-          editObject={editObject}
-          editingObject={editingObject}
-        ></Modal>
-      ) : null}
-      <ToastContainer />
+      <div className={styles.page_container}>
+        <button className={styles.button_create} onClick={onOpenModal}>
+          Создать объект
+        </button>
+        <div className={styles.objects_container}>
+          {objects.map((obj, index) => (
+            <UserObject
+              deleteObject={deleteObject}
+              onOpenModal={onOpenModal}
+              editObject={setEditingObject}
+              key={index}
+              data={obj}
+            ></UserObject>
+          ))}
+        </div>
+
+        {isModalOpened ? (
+          <Modal
+            onCloseModal={onCloseModal}
+            addObject={addObject}
+            editObject={editObject}
+            editingObject={editingObject}
+          ></Modal>
+        ) : null}
+        {isModalOpened ? <div className={styles.backdrop}></div> : null}
+      </div>
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };

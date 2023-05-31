@@ -5,6 +5,7 @@ import { fetchColors } from "../../redux/slices/colors";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import styles from "./MainPage.module.css";
 
 // Компонент главной страницы
 export const MainPage = () => {
@@ -51,30 +52,40 @@ export const MainPage = () => {
   return (
     <div>
       <Header></Header>
+
       {isColorsLoading ? (
-        <div>
-          <p>Страница ? из ?</p>
+        <div className={styles.page_container}>
+          <p className={styles.pages}>Страница ? из ?</p>
           <DataTable data={loadingObject}></DataTable>
         </div>
       ) : (
-        <div>
-          <p>
+        <div className={styles.page_container}>
+          <p className={styles.pages}>
             Страница {colors.items.page} из {colors.items.total_pages}
           </p>
           <DataTable data={colors.items.data}></DataTable>
-          {colors.items.page > 1 ? (
-            <button onClick={() => setPage(page - 1)}>
-              Предыдущая страница
-            </button>
-          ) : null}
-          {colors.items.page < colors.items.total_pages ? (
-            <button onClick={() => setPage(page + 1)}>
-              Следующая страница
-            </button>
-          ) : null}
+          <div className={styles.buttons_container}>
+            {colors.items.page > 1 ? (
+              <button
+                className={styles.page_button}
+                onClick={() => setPage(page - 1)}
+              >
+                Предыдущая страница
+              </button>
+            ) : null}
+            {colors.items.page < colors.items.total_pages ? (
+              <button
+                className={styles.page_button}
+                onClick={() => setPage(page + 1)}
+              >
+                Следующая страница
+              </button>
+            ) : null}
+          </div>
         </div>
       )}
-      <ToastContainer />
+
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };

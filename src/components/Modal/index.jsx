@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
-import { Header } from "../Header";
+import styles from "./Modal.module.css";
 
 // Компонент модального окна для создания и редактирования объектов
 export const Modal = ({
@@ -35,37 +35,51 @@ export const Modal = ({
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="naming">Название</label>
+    <div className={styles.modal}>
+      <form className={styles.modal_form} onSubmit={onSubmit}>
+        <label className={styles.modal_label} htmlFor="naming">
+          Название
+        </label>
         <input
+          className={styles.modal_input}
           onChange={(e) => setNaming(e.target.value)}
           id="naming"
           value={naming}
           placeholder="Название..."
         ></input>
-        <label htmlFor="year">Год</label>
+        <label className={styles.modal_label} htmlFor="year">
+          Год
+        </label>
         <input
+          className={styles.modal_input}
           onChange={(e) => setYear(e.target.value)}
           id="year"
           value={year}
           placeholder="Год..."
         ></input>
-        <label htmlFor="color">Цвет</label>
+        <label className={styles.modal_label} htmlFor="color">
+          Цвет
+        </label>
         <input
+          className={styles.modal_input}
           onChange={(e) => setColor(e.target.value)}
           id="color"
           value={color}
           placeholder="Цвет..."
         ></input>
-        <label htmlFor="pantone">Пантон</label>
+        <label className={styles.modal_label} htmlFor="pantone">
+          Пантон
+        </label>
         <input
+          className={styles.modal_input}
           onChange={(e) => setPantone(e.target.value)}
           id="pantone"
           value={pantone}
           placeholder="Пантон..."
         ></input>
-        <button type="submit">Создать</button>
+        <button className={styles.modal_button} type="submit">
+          Создать
+        </button>
       </form>
     </div>
   );

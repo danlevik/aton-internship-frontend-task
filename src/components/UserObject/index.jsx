@@ -1,3 +1,5 @@
+import styles from "./UserObject.module.css";
+
 // Компонент объекта, создаваемого пользователем локально
 export const UserObject = ({ data, deleteObject, onOpenModal, editObject }) => {
   const onDelete = () => {
@@ -12,14 +14,18 @@ export const UserObject = ({ data, deleteObject, onOpenModal, editObject }) => {
   };
 
   return (
-    <div>
-      <p>ID: {data.id}</p>
-      <p>Название: {data.naming}</p>
-      <p>Год: {data.year}</p>
-      <p>Цвет: {data.color}</p>
-      <p>Пантон: {data.pantone}</p>
-      <button onClick={onEdit}>Редактировать</button>
-      <button onClick={onDelete}>Удалить</button>
+    <div className={styles.object_container}>
+      <p className={styles.object_param}>ID: {data.id}</p>
+      <p className={styles.object_param}>Название: {data.naming}</p>
+      <p className={styles.object_param}>Год: {data.year}</p>
+      <p className={styles.object_param}>Цвет: {data.color}</p>
+      <p className={styles.object_param}>Пантон: {data.pantone}</p>
+      <button className={styles.object_button} onClick={onEdit}>
+        Редактировать
+      </button>
+      <button className={styles.object_button_red} onClick={onDelete}>
+        Удалить
+      </button>
     </div>
   );
 };
